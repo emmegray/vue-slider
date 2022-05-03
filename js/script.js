@@ -33,19 +33,31 @@ const app = new Vue({
     data:{
         slides,
         currentSlide: 0,
+        running: true,
     },
     methods:{
         nextSlide(){
             this.currentSlide++;
-            if(this.currentSlide > this.currentSlide.length - 1){
+            if(this.currentSlide > this.slides.length - 1){
                 this.currentSlide = 0;
             }
         },
         prevSlide(){
             this.currentSlide--;
             if(this.currentSlide < 0){
-                this.currentSlide = this.currentSlide.length - 1;
+                this.currentSlide = this.slides.length - 1;
             }
-        }
+        },
+        stop(){
+            this.running = false;
+        },
+        start(){
+            this.running = true;
+        },
+    },
+    mounted(){
+        setInterval(() => {
+            if (this.running) this.nextSlide();
+        }, 3000)
     }
 })
