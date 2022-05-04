@@ -14,10 +14,10 @@
     <div id="app">
 
         <div class="container" >
-            <div class="slider-wrapper" tabindex="0">
+            <div v-on:mouseenter="stop()" v-on:mouseleave="start()" class="slider-wrapper" tabindex="0">
 
                 <div class="item">
-                    <img v-on:mouseenter="stop()" v-on:mouseleave="start()" :src="slides[currentSlide].image" :alt="slides[currentSlide].title" />
+                    <img :src="slides[currentSlide].image" :alt="slides[currentSlide].title" />
                     <div class="text">
                         <h3>{{slides[currentSlide].title}}</h3>
                         <p>{{slides[currentSlide].text}}</p>
